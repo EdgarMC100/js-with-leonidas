@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tagged Templates</title>
+    <style>
+      body {
+        display: flex;
+        margin: 0;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        font-family: system-ui;
+        background-color: #000;
+        color: #f2f5ff;
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+        font-size: 2em;
+      }
+
+      strong {
+        color: #f5e960;
+        padding: 0.15em 0.4em;
+        background: #dfb2f4;
+        border-radius: 20px;
+        border: 1px solid #f2f5ff;
+      }
+    </style>
+  </head>
+  <body>
+    <p>El trabajo duro supera al talento natural</p>
+    <script>
+      const pTag = document.createElement("p");
+      const newContent = "";
+      console.log(pTag);
+      function taggedTemplate(strings, ...dynamicValues) {
+        let newContent = "";
+
+        console.log(strings, dynamicValues);
+
+        strings.forEach((string, index) => {
+          const strong = `<strong>${dynamicValues[index]}</strong>`;
+
+          dynamicValues[index] ? (newContent += `${string} ${strong}`) : "";
+        });
+        return `<p>${newContent}</p>`;
+      }
+
+      let dynamicText = taggedTemplate`El ${"trabajo duro"} supera al ${"talento natural"}`;
+
+      //   pTag.innerText = dynamicText;
+      document.body.innerHTML = dynamicText;
+    </script>
+  </body>
+</html>
