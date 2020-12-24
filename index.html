@@ -40,6 +40,56 @@
     <img class="center-leo" src="./assets/leo-bgremoved.png" alt="" />
     <div id="container"></div>
     <script>
+      const styled = {
+        h1: function (styles) {
+          return function (content) {
+            return `
+              <h2 style="${styles}">
+                ${content}
+              </h2>
+            `;
+          };
+        },
+        h2: "",
+        div: "",
+      };
+      const styled2 = (function (elements = ["h1", "h2", "h3"]) {
+        elements.forEach((element) => {
+          console.log(element);
+          // return {
+          //   [element]: function (styles) {
+          //   return function (content) {
+          //     return `
+          //       <${[element]} style="${styles}">
+          //     `;
+          //   };
+          // },
+          // }
+        });
+        // return {
+
+        // };
+      })();
+      console.log(style2);
+      // const styled = (function(styles) {
+      //   return function (element) {
+
+      //   } {
+      //     [element] : function (styles) {
+      //         return function (content) {
+      //           return `
+      //             <h2 style="${styles}">
+      //               ${content}
+      //             </h2>
+      //           `;
+      //         };
+      //     },
+
+      //   }
+      // };
+      const TitleStyled = styled.h1`
+        color: black;
+      `;
       const props = {
         message: "<b>No te rindas<b>".toUpperCase(),
         name: "Edgar",
@@ -59,7 +109,7 @@
         };
       }
 
-      const user = component`👨🏻‍💻 ${"message"} ${"reflexion"} 🤟🏻`(props);
+      const Title = component`👨🏻‍💻 ${"message"} ${"reflexion"} 🤟🏻`(props);
       // function render(component, container) {
       // container.innerHTML = component;
       // }
@@ -67,7 +117,7 @@
         container.innerHTML = component;
       };
 
-      render(user, window.container);
+      render(TitleStyled(Title), window.container);
     </script>
   </body>
 </html>
